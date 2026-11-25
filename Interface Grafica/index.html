@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobilidade Urbana</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>Mobilidade <span>Urbana</span></h2>
+                <p>Sistema de Mobilidade Urbana</p>
+            </div>
+
+            <nav>
+                <p class="menu-title">MENU PRINCIPAL</p>
+
+                <a href="#" class="menu-item active">
+                    <span>▦</span> Visão geral
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>📍</span> Locais
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>⇄</span> Conexões
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>⌁</span> Percursos
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span>⚠</span> Interdições
+                </a>
+            </nav>
+
+            <!-- Identificacao da desenvolvedora -->
+            <div class="sidebar-footer">
+                <p>Desenvolvido por</p>
+                <h3>Laís de Paula Carneiro</h3>
+                <span>RA: 10418061</span>
+                <span>Projeto de Estrutura de Dados</span>
+            </div>
+
+        </aside>
+
+        <!-- Conteudo principal -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Visão geral</h1>
+                    <p>Gerencie locais e conexões da rede urbana.</p>
+                </div>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    Sistema ativo
+                </div>
+
+            </header>
+
+            <!-- Indicadores -->
+            <section class="statistics">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">📍</div>
+
+                    <p>Locais cadastrados</p>
+
+                    <h2 id="total-locais">15</h2>
+
+                    <span>Na rede urbana</span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">⇄</div>
+
+                    <p>Conexões cadastradas</p>
+
+                    <h2 id="total-conexoes">25</h2>
+
+                    <span>Na rede urbana</span>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">⚠</div>
+
+                    <p>Conexões interditadas</p>
+
+                    <h2 id="total-interditadas">0</h2>
+
+                    <span>Temporariamente bloqueadas</span>
+
+                </div>
+
+            </section>
+
+            <!-- Area de visualizacao -->
+            <section class="content-grid">
+
+                <div class="panel network-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Mapa de conexões</h2>
+                            <p>Visualização da rede de mobilidade</p>
+                        </div>
+
+                        <span class="network-label">15 locais</span>
+
+                    </div>
+
+                    <div class="network-area" id="network-area">
+
+                        <div class="network-placeholder">
+                            <span>⌘</span>
+                            <h3>Visualização da rede</h3>
+                            <p>Os locais e suas conexões serão exibidos aqui.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="legend">
+
+                        <span>
+                            <i class="legend-dot blue-dot"></i>
+                            Local
+                        </span>
+
+                        <span>
+                            <i class="legend-dot green-dot"></i>
+                            Percurso selecionado
+                        </span>
+
+                        <span>
+                            <i class="legend-dot red-dot"></i>
+                            Conexão interditada
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Painel de percurso -->
+                <div class="panel route-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Calcular percurso</h2>
+                            <p>Encontre o melhor caminho</p>
+                        </div>
+
+                    </div>
+
+                    <form id="route-form">
+
+                        <label for="origem">Local de origem</label>
+
+                        <select id="origem">
+                            <option value="">Selecione a origem</option>
+                        </select>
+
+                        <label for="destino">Local de destino</label>
+
+                        <select id="destino">
+                            <option value="">Selecione o destino</option>
+                        </select>
+
+                        <label for="algoritmo">Tipo de busca</label>
+
+                        <select id="algoritmo">
+                            <option value="dijkstra">Menor caminho (Dijkstra)</option>
+                            <option value="bfs">Verificar percurso (BFS)</option>
+                        </select>
+
+                        <button type="submit">
+                            Calcular percurso
+                        </button>
+
+                    </form>
+
+                    <div id="route-result" class="route-result">
+                        <p>Selecione a origem e o destino para consultar um percurso.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Tabela de locais -->
+            <section class="panel locations-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Locais cadastrados</h2>
+                        <p>Consulte os pontos da rede urbana</p>
+                    </div>
+
+                    <button class="secondary-button" id="ver-locais">
+                        Ver todos
+                    </button>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome do local</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="locations-table">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
